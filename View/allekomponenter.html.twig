@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alle Komponenter</title>
+</head>
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+<body>
+
+<table>
+
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Specifications</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Link</th>
+        <th>Note</th>
+        <th>Estimated Delivery</th>
+        <th>Actions</th>
+    </tr>
+    {% for c in Components %}
+    <tr>
+        <td>{{ c.Id }}</td>
+        <td>{{ c.Title}}</td>
+        <td>{{ c.Specification }}</td>
+        <td>{{ c.Price }}</td>
+        <td>{{ c.Quantity}}</td>
+        <td>{{ c.Link }}</td>
+        <td>{{ c.Note}}</td>
+        <td>{{ c.EstDelivery }}</td>
+        <td>
+            <form action="../Controller/deletekomponent.php" method="POST">
+                Id: <input type="number" value="{{c.Id}}" name="{{c.Id}}" />
+                Send: <input type="submit" value="Slet" name="SletKnap" />
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
