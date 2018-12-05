@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reservations</title>
+    <title>Done</title>
 </head>
 <style>
     table {
@@ -29,17 +29,18 @@
         <th>ID</th>
         <th>Product</th>
         <th>ScheduledDate</th>
-        <th>IsInProduction</th>
         <th>IsDone</th>
+        <th>IsInProduction</th>
     </tr>
-    {% for p in Productions %}
-        <tr>
-            <td>{{ p.Id }}</td>
-            <td>{{ p.Product}}</td>
-            <td>{{ p.ScheduledDate }}</td>
-            <td>{{ p.IsInProduction }}</td>
-            <td>{{ p.IsDone }}</td>
-        </tr>
+    {% for d in Done %}
+    <tr>
+        <td>{{ d.Id }}</td>
+        <td>{{ d.Product}}</td>
+        <td>{{ d.ScheduledDate }}</td>
+        <td>{{ d.IsDone }}</td>
+        <td>{{ d.IsInProduction }}</td>
+
+    </tr>
     {% endfor %}
 </table>
 

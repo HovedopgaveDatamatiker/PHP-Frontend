@@ -14,7 +14,7 @@ $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
 $template = $twig->loadTemplate('redirectdelete.html.twig');
-$id = $_REQUEST['{{c.Id}}'];
+$id = $_REQUEST['Id'];
 // set up DELETE request
 $URI = "http://storageservice2018.azurewebsites.net/Service1.svc/komponenter?id=".$id;
 $req = curl_init($URI); // initlize curl

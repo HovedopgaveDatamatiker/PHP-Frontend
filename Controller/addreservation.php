@@ -17,9 +17,15 @@ $twig = new Twig_Environment($loader, array(
 $template = $twig->loadTemplate('redirect.html.twig'); // actual twig file
 $con = new stdClass();
 $con ->Id = $_REQUEST['Id'];
-$con ->Title = $_REQUEST['Product'];
+$con ->Product = $_REQUEST['Product'];
 $con ->ScheduledDate = $_REQUEST['ScheduledDate'];
 $con ->IsDone = $_REQUEST['IsDone'];
+$con ->IsInProduction = $_REQUEST['IsInProduction'];
+
+
+
+
+
 
 $json = json_encode($con);
 // set up POST request

@@ -47,9 +47,9 @@
         <td>{{ c.Note}}</td>
         <td>{{ c.EstDelivery }}</td>
         <td>
-            <form action="../Controller/deletekomponent.php" method="POST">
-                Id: <input type="number" value="{{c.Id}}" name="{{c.Id}}" />
-                Send: <input type="submit" value="Slet" name="SletKnap" />
+            <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/deletekomponent.php" method="POST">
+                <input type="hidden" value="{{c.Id}}" name="Id" />
+                <input type="submit" value="Slet" name="SletKnap" />
             </form>
         </td>
     </tr>

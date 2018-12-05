@@ -5,16 +5,32 @@ body{
 .wrapper-left {
     float: left;
     width: 13%;
-    background-color: #3e3e3e;
+    background-color: cadetblue;
     height: 100vh;
+    font-family: "Yu Gothic";
 }
+
+.wrapper-left a {
+    display: block;
+    text-align: center;
+    transition: all 0.3s ease;
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 24.5px;
+    text-decoration-line: none;
+}
+
+.wrapper-left a:hover {
+    background-color: #000;
+}
+
 
 .wrapper-right {
     float: left;
     width: 87%;
     background-color: white;
     height: 100vh;
-    position: fixed;
 }
 
 .addbtns{

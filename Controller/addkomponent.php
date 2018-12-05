@@ -24,6 +24,8 @@ $con ->Link = $_REQUEST['Link'];
 $con ->Note = $_REQUEST['Note'];
 $con ->EstDelivery = $_REQUEST['EstDelivery'];
 $con ->Quantity = $_REQUEST['Quantity'];
+
+
 $json = json_encode($con);
 // set up POST request
 $URI = 'http://storageservice2018.azurewebsites.net/Service1.svc/komponenter'; // URL to REST API

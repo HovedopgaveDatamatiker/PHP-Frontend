@@ -9,12 +9,14 @@
         .poptitle{
             position: absolute;
             top: 3px;
-            left: 6.5%;
+            left: 11%;
             transition: all 200ms;
             font-size: 30px;
-            font-weight: bold;
+
             text-decoration: none;
             color: #333;
+            font-family: monospace;
+            font-weight: 600;
         }
 
         .popup {
@@ -89,20 +91,75 @@
             width: 100%;
             margin: 19px 0%;
             position: relative;}
-        #nr1 {     margin-top: 14%}
+        #nr1 {     margin-top: 14%;    margin-left: 9%;}
+        #nr2 {      margin-left: 9%;}
 
         .effect-1 {
-            border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;}
+            border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;width: 80%;}
 
         .effect-1 ~ .focus-border {
             position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.4s;}
 
         .effect-1:focus ~ .focus-border {
-            width: 100%; transition: 0.4s;}
+            transition: 0.4s;margin-left: 9%;
+            width: 80%;
+        }
+
+        .effect-2 {
+            border: 0; padding: 7px 0; border-bottom: 1px solid #ccc;width: 80%;}
+
+        .effect-2 ~ .focus-border {
+            position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background-color: #4caf50; transition: 0.4s;}
+
+        .effect-2:focus ~ .focus-border {
+            transition: 0.4s;
+            width: 80%;
+        }
 
         #bg_1 {
             margin-left: 3%;
             width: 93%;
+        }
+
+        .thisbutton{    background-color: #a52a2a;
+            padding-top: 13px;
+            padding-bottom: 13px;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-left: 11%;
+            margin-bottom: 6%;
+            margin-top: 3%;}
+
+        .button1{
+            display: inline-block;
+            /* padding: 0.35em 1.2em; */
+            padding: 13px 30px 13px 30px;
+            border: 0.1em solid #FFFFFF;
+            margin: 0 0.3em 0.3em 0;
+            border-radius: 0.12em;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Roboto',sans-serif;
+            font-weight: 300;
+            color: #FFFFFF;
+            text-align: center;
+            transition: all 0.2s;
+            background-color: #30a954;
+            cursor: pointer;
+            margin-left: 11%;
+            margin-bottom: 6%;
+            margin-top: 3%;
+        }
+        .button1:hover{
+            color:#FFFFFF;
+            background-color:#27673a;
+            transition: all 0.2s;
+        }
+        @media all and (max-width:30em){
+             .button1{
+                display:block;
+                margin:0.4em auto;
+                 }
         }
     </style>
 </head>
@@ -113,10 +170,10 @@
     </div>
 </a>
 <div class="wrapper-left">
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/">STORAGE</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php">RESERVATIONS</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php">PRODUCTION</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php">FINISHED PRODUCTIONS</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
+    <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
 
 
@@ -176,24 +233,40 @@
 <div id="popup1" class="overlay">
     <div class="popup">
         <p class="poptitle">CREATE RESERVATION</p>
+        <form class="forming" action="Controller/addreservation.php" method="POST">
         <div class="row bg_1">
             <div class="col-3" id="nr1">
-                <input class="effect-1" type="text" placeholder="ID">
+                <input class="effect-1" value="" name="Id" type="number" placeholder="ID">
                 <span class="focus-border"></span>
             </div>
             <div class="col-3">
-                <input class="effect-1" type="text" placeholder="Product">
+                <input class="effect-1"  value="" name="Product" type="text" placeholder="Product">
                 <span class="focus-border"></span>
             </div>
-            <div class="col-3">
-                <input class="effect-1" type="text" placeholder="Scheduled Date">
+            <div class="col-3" id="nr2">
+                <input class="effect-2" value="" name="ScheduledDate" type="datetime-local" placeholder="Scheduled Date">
                 <span class="focus-border"></span>
             </div>
+            <div class="col-3" id="nr2">
+                IsInProduction
+                <input class="effect-2" value="" name="IsInProduction" type="text" placeholder="IsInProduction">
+                <span class="focus-border"></span>
+            </div>
+            <div class="col-3" id="nr2">
+                IsDone
+                <input class="effect-2" value="" name="IsDone" type="text" placeholder="IsDone">
+                <span class="focus-border"></span>
+            </div>
+
         </div>
-        <input type="submit" value="Tilføj" name="TilføjKnap" />
+
+        <input class="button1" type="submit" value="Tilføj" name="TilføjKnap" />
+            </form>
         <a class="close" href="#">&times;</a>
+
     </div>
 </div>
+
 
 
 </body>

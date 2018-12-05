@@ -13,10 +13,10 @@
 </div>
 </a>
 <div class="wrapper-left">
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/">STORAGE</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php">RESERVATIONS</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php">PRODUCTION</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php">FINISHED PRODUCTIONS</a>
+    <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
 
 
@@ -28,7 +28,7 @@
     <?php
     /**
      * Created by PhpStorm.
-     * User: Tasss
+     * User: Tas
      * Date: 22-11-2018
      * Time: 10:57
      */
@@ -51,12 +51,12 @@
 
     ?>
 
-    <h1>Slet en komponent</h1>
+<!--    <h1>Slet en komponent</h1>
     <form action="Controller/deletekomponent.php" method="POST">
-        Id: <input type="number" value="{{c.Id}}" name="{{c.Id}}" />
+        Id: <input type="number" value="" name="Id" />
         Send: <input type="submit" value="Slet" name="SletKnap" />
     </form>
-
+-->
 
 </div>
 
