@@ -9,10 +9,10 @@
 <body>
 
 <div class="wrapper-left">
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/">STORAGE</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php">RESERVATIONS</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php">PRODUCTION</a>
-    <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php">FINISHED PRODUCTIONS</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
+    <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
+    <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
 
 

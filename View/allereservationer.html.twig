@@ -65,23 +65,24 @@
 </style>
 <body>
 
-{#<table>#}
+<table>
 
-{#<tr>#}
-{#<th>ID</th>#}
-{#<th>Product</th>#}
-{#<th>ScheduledDate</th>#}
+    <tr>
+        <th>Id</th>
+        <th>Product</th>
+        <th>IsDone</th>
+        <th>IsInProduction</th>
+    </tr>
+    {% for rp in Reservations %}
+        <tr>
+            <td>{{ rp.Id }}</td>
+            <td>{{ rp.Product }}</td>
+            <td>{{ rp.IsDone }}</td>
+            <td>{{ rp.IsInProduction }}</td>
+        </tr>
+    {% endfor %}
 
-{#</tr>#}
-{#{% for r in Reservations %}#}
-{#<tr>#}
-{#<td>{{ r.Id }}</td>#}
-{#<td>{{ r.Product}}</td>#}
-{#<td>{{ r.ScheduledDate }}</td>#}
-
-{#</tr>#}
-{#{% endfor %}#}
-{#</table>#}
+</table>
 
 <div class="container">
 {% for r in Reservations %}
@@ -91,7 +92,6 @@
             <h1>{{ r.Product}}</h1>
         </div>
         <div class="item-content">
-            <h1>{{ r.ScheduledDate }}</h1>
             <br>
             <h1>{{ r.IsDone }}</h1>
             <h1>{{ r.IsInProduction }}</h1>

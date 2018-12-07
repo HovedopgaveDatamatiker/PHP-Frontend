@@ -12,16 +12,14 @@
     <i class="fa fa-plus" style="font-size:24px; text-align: center;margin-left: 34%;margin-top: 30%; color: white"></i>
 </div>
 </a>
+
+
 <div class="wrapper-left">
     <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
-
-
-
-
 
 <div class="wrapper-right">
     <h1>Alle Komponenter</h1>
@@ -64,7 +62,7 @@
     <div class="popup">
         <div class="login-overskrift">
             <div class="log-intitle-filler"></div>
-            <div class="log-intitle">OPRET KOMPONENT</div>
+            <div class="log-intitle"><b>OPRET KOMPONENT<b></div>
         </div>
         <form class="forming" action="Controller/addkomponent.php" method="POST">
             Id: <input type="text" value="" name="Id" />
@@ -80,6 +78,21 @@
         <a class="close" href="#">&times;</a>
     </div>
 </div>
+
+<br></br><br></br><br></br>
+<b>EDIT</b>
+<br>
+<form class="forming" action="Controller/updatekomponent.php" method="POST">
+    Id: <input type="text" value="" name="Id" />
+    Title: <input type="text" value="" name="Title" />
+    Specification: <input type="text" step="0.01" value="" name="Specification" />
+    Price: <input type="number" value="" name="Price" />
+    Link: <input type="text" value="" name="Link" />
+    Note: <input type="text" value="" name="Note" />
+    EstDelivery: <input type="number" value="" name="EstDelivery" />
+    Quantity: <input type="number" value="" name="Quantity" />
+    Send: <input type="submit" value="Edit" name="EditKnap" />
+</form>
 
 </body>
 </html>

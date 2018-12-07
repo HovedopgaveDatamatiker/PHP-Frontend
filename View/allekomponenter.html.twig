@@ -30,10 +30,13 @@
         <th>Title</th>
         <th>Specifications</th>
         <th>Price</th>
-        <th>Quantity</th>
+        <th>Bulk</th>
         <th>Link</th>
         <th>Note</th>
         <th>Estimated Delivery</th>
+        <th>Available</th>
+        <th>Reserved</th>
+        <th>Available w. Reserved</th>
         <th>Actions</th>
     </tr>
     {% for c in Components %}
@@ -46,12 +49,22 @@
         <td>{{ c.Link }}</td>
         <td>{{ c.Note}}</td>
         <td>{{ c.EstDelivery }}</td>
+        <td>{{ c.Available }}50</td>
+        <td>{{ c.Reserved }}</td>
+        <td>{{ c.AvailableReserved }}</td>
         <td>
             <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/deletekomponent.php" method="POST">
                 <input type="hidden" value="{{c.Id}}" name="Id" />
-                <input type="submit" value="Slet" name="SletKnap" />
+                <input type="submit" value="Delete" name="SletKnap" />
             </form>
+            <a href="">
+            <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/updatekomponent.php" method="POST">
+                <input type="hidden" value="{{c.Id}}" name="Id" />
+                <input type="submit" value="Edit" name="EditKnap" />
+            </form>
+            </a>
         </td>
+
     </tr>
     {% endfor %}
 

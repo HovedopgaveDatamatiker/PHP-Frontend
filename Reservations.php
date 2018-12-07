@@ -176,20 +176,9 @@
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
 
-
-
-
-
 <div class="wrapper-right">
     <h1>Alle Reservationer</h1>
     <?php
-    /**
-     * Created by PhpStorm.
-     * User: Tas
-     * Date: 22-11-2018
-     * Time: 10:57
-     */
-
     //twig
     require_once 'vendor/autoload.php';
     Twig_Autoloader::register();
@@ -198,42 +187,37 @@
     $twig = new Twig_Environment($loader, array(
         'auto_reload' => true
     ));
-    $template = $twig->loadTemplate('allereservationer.html.twig'); //referer til allecoins.html.twig.twig så den kan bruges
+    $template = $twig->loadTemplate('allereservationer.html.twig'); //referer til allereservationer.html.twig.twig så den kan bruges
     $uri = "http://storageservice2018.azurewebsites.net/Service1.svc/reservations";
     $json = file_get_contents($uri);
     $Liste = json_decode($json); //fortæller jeg gerne vil have det i json
     $twigContent = array ("Reservations" => $Liste); // laver et array med min variabel $liste
     #print_r($twigContent);
     echo $template->render($twigContent);
-
     ?>
-
-
-
 </div>
-
-<!--<div id="popup1" class="overlay">-->
-<!--    <div class="popup">-->
-<!--        <div class="login-overskrift">-->
-<!--            <div class="log-intitle-filler"></div>-->
-<!--            <div class="log-intitle">OPRET KOMPONENT</div>-->
-<!--        </div>-->
-<!--        <form class="forming" action="Controller/addreservation.php" method="POST">-->
-<!--            Id: <input type="number" value="" name="Id" />-->
-<!--            Title: <input type="text" value="" name="Product" />-->
-<!--            ScheduledDate: <input type="number" step="0.01" value="" name="ScheduledDate" />-->
-<!--            IsDone: <input type="checkbox" value=0 name="IsDone" />-->
-<!---->
-<!--            Send: <input type="submit" value="Tilføj" name="TilføjKnap" />-->
-<!--        </form>-->
-<!--        <a class="close" href="#">&times;</a>-->
-<!--    </div>-->
-<!--</div>-->
-
 <div id="popup1" class="overlay">
     <div class="popup">
-        <p class="poptitle">CREATE RESERVATION</p>
+        <div class="login-overskrift">
+            <div class="log-intitle-filler"></div>
+            <div class="log-intitle">OPRET KOMPONENT</div>
+        </div>
         <form class="forming" action="Controller/addreservation.php" method="POST">
+            Id: <input type="text" value="" name="Id" />
+            Product: <input type="text" value="" name="Product" />
+            <input type="submit" value="Tilføj" name="TilføjKnap" />
+        </form>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
+
+
+
+
+<!--<div id="popup1" class="overlay">
+    <div class="popup">
+        <p class="poptitle">CREATE RESERVATION</p>
+        <form class="forming" action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/addreservation.php" method="POST">
         <div class="row bg_1">
             <div class="col-3" id="nr1">
                 <input class="effect-1" value="" name="Id" type="number" placeholder="ID">
@@ -248,13 +232,11 @@
                 <span class="focus-border"></span>
             </div>
             <div class="col-3" id="nr2">
-                IsInProduction
-                <input class="effect-2" value="" name="IsInProduction" type="text" placeholder="IsInProduction">
+                <input class="effect-2" value="false" name="IsInProduction" type="hidden" placeholder="IsInProduction">
                 <span class="focus-border"></span>
             </div>
             <div class="col-3" id="nr2">
-                IsDone
-                <input class="effect-2" value="" name="IsDone" type="text" placeholder="IsDone">
+                <input class="effect-2" value="false" name="IsDone" type="hidden" placeholder="IsDone">
                 <span class="focus-border"></span>
             </div>
 
@@ -265,7 +247,7 @@
         <a class="close" href="#">&times;</a>
 
     </div>
-</div>
+</div>-->
 
 
 
