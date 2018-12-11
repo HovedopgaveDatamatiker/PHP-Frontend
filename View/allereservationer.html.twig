@@ -65,7 +65,7 @@
 </style>
 <body>
 
-<table>
+{#<table>
 
     <tr>
         <th>Id</th>
@@ -82,7 +82,7 @@
         </tr>
     {% endfor %}
 
-</table>
+</table>#}
 
 <div class="container">
 {% for r in Reservations %}
@@ -93,8 +93,18 @@
         </div>
         <div class="item-content">
             <br>
-            <h1>{{ r.IsDone }}</h1>
-            <h1>{{ r.IsInProduction }}</h1>
+            <td>
+                <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/moveresevation.php" method="POST">
+                    <input type="hidden" value="{{r.Id}}" name="Id" />
+                    <input type="submit" value="To Production" name="MoveKnap" />
+                </form>
+                <br>
+                <a href="#popup3">
+                    <form action="">
+                        <input type="button" value="Edit" name="EditKnap" />
+                    </form>
+                </a>
+            </td>
         </div>
         <div class="item-actions">
             <h1>{{ r.Id }}</h1><h1>{{ r.IsDone }}</h1>

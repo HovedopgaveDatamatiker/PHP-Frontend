@@ -20,6 +20,65 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+
+     table {
+         font-family: arial, sans-serif;
+         border-collapse: collapse;
+         width: 100%;
+     }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: auto;
+    }
+    .item {
+        height: 400px;
+        width: 300px;
+        background-color: purple;
+        /* padding: 10px; */
+        margin: 10px;
+    }
+
+    .item-title {
+        height: 49px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: aquamarine;
+    }
+
+    .item-content {
+        height: 300px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: grey;
+    }
+
+    .item-actions {
+        height: 49px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: aquamarine;
+    }
+
+
 </style>
 <body>
 
@@ -28,21 +87,47 @@
     <tr>
         <th>ID</th>
         <th>Product</th>
-        <th>ScheduledDate</th>
-        <th>IsInProduction</th>
-        <th>IsDone</th>
+
     </tr>
     {% for p in Productions %}
         <tr>
             <td>{{ p.Id }}</td>
             <td>{{ p.Product}}</td>
-            <td>{{ p.ScheduledDate }}</td>
-            <td>{{ p.IsInProduction }}</td>
-            <td>{{ p.IsDone }}</td>
+
         </tr>
     {% endfor %}
 </table>
 
+<div class="container">
+    {% for p in Productions %}
+
+        <div class="item">
+            <div class="item-title">
+                <h1>{{ r.Product}}</h1>
+            </div>
+            <div class="item-content">
+                <br>
+                <td>
+                    <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/updateresevation.php" method="POST">
+                        <input type="hidden" value="{{r.Id}}" name="Id" />
+                        <input type="submit" value="To Production" name="MoveKnap" />
+                    </form>
+                    <br>
+                    <a href="#popup3">
+                        <form action="">
+                            <input type="button" value="Edit" name="EditKnap" />
+                        </form>
+                    </a>
+                </td>
+            </div>
+            <div class="item-actions">
+                <h1>{{ r.Id }}</h1><h1>{{ r.IsDone }}</h1>
+            </div>
+        </div>
+
+
+    {% endfor %}
+</div>
 
 </body>
 </html>

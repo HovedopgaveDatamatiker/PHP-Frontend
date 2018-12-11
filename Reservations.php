@@ -177,7 +177,7 @@
 </div>
 
 <div class="wrapper-right">
-    <h1>Alle Reservationer</h1>
+    <h1>Reservations</h1>
     <?php
     //twig
     require_once 'vendor/autoload.php';
@@ -200,7 +200,7 @@
     <div class="popup">
         <div class="login-overskrift">
             <div class="log-intitle-filler"></div>
-            <div class="log-intitle">OPRET KOMPONENT</div>
+            <div class="log-intitle">Create reservation</div>
         </div>
         <form class="forming" action="Controller/addreservation.php" method="POST">
             Id: <input type="text" value="" name="Id" />
@@ -250,6 +250,20 @@
 </div>-->
 
 
+<div id="popup3" class="overlay">
+    <div class="popup">
+        <div class="login-overskrift">
+            <div class="log-intitle-filler"></div>
+            <div class="log-intitle"><b>Edit Component<b></div>
+        </div>
 
+        <form class="forming" action="Controller/updatereservation.php" method="POST">
+            Id: <input type="text" value="" name="Id" />
+            Product: <input type="text" value="" name="Product" />
+            Send: <input type="submit" value="Edit" name="EditKnap" />
+        </form>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
 </body>
 </html>

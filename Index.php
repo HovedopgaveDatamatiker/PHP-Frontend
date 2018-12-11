@@ -79,20 +79,27 @@
     </div>
 </div>
 
-<br></br><br></br><br></br>
-<b>EDIT</b>
-<br>
-<form class="forming" action="Controller/updatekomponent.php" method="POST">
-    Id: <input type="text" value="" name="Id" />
-    Title: <input type="text" value="" name="Title" />
-    Specification: <input type="text" step="0.01" value="" name="Specification" />
-    Price: <input type="number" value="" name="Price" />
-    Link: <input type="text" value="" name="Link" />
-    Note: <input type="text" value="" name="Note" />
-    EstDelivery: <input type="number" value="" name="EstDelivery" />
-    Quantity: <input type="number" value="" name="Quantity" />
-    Send: <input type="submit" value="Edit" name="EditKnap" />
-</form>
+<div id="popup2" class="overlay">
+    <div class="popup">
+        <div class="login-overskrift">
+            <div class="log-intitle-filler"></div>
+            <div class="log-intitle"><b>Edit Component<b></div>
+        </div>
+
+        <form class="forming" action="Controller/updatekomponent.php" method="POST">
+            Id: <input type="text" value="" name="Id" />
+            Title: <input type="text" value="" name="Title" />
+            Specification: <input type="text" step="0.01" value="" name="Specification" />
+            Price: <input type="number" value="" name="Price" />
+            Link: <input type="text" value="" name="Link" />
+            Note: <input type="text" value="" name="Note" />
+            EstDelivery: <input type="number" value="" name="EstDelivery" />
+            Quantity: <input type="number" value="" name="Quantity" />
+            Send: <input type="submit" value="Edit" name="EditKnap" />
+        </form>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
 
 </body>
 </html>
