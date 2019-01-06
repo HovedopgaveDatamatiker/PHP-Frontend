@@ -12,6 +12,7 @@ $con ->Id = $_REQUEST['Id'];
 $con ->IsDone = false;
 $con ->IsInProduction = false;
 $con ->Product = $_REQUEST['Product'];
+$con ->ScheduledDate = $_REQUEST['ScheduledDate'];
 $json = json_encode($con);
 
 
@@ -26,7 +27,7 @@ curl_setopt($req, CURLOPT_HTTPHEADER, array(
 curl_setopt($req, CURLOPT_POSTFIELDS, $json);   // insert data in body
 curl_setopt($req, CURLOPT_RETURNTRANSFER, false);    // do not display json
 $result = curl_exec($req);  // sends the request and get result
-// Get All Games
+// Get All Reservations
 $uri = "http://storageservice2018.azurewebsites.net/Service1.svc/reservations";
 $jsonStr = file_get_contents($uri);
 $Liste = json_decode($jsonStr);

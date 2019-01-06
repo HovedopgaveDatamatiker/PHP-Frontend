@@ -12,14 +12,14 @@
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
-    <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
+    <a class="activ" href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
 
 
 
 
 <div class="wrapper-right">
-    <h1>Alle Done</h1>
+    <h1>Finished Productions</h1>
     <?php
     /**
      * Created by PhpStorm.

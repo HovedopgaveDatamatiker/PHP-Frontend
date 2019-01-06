@@ -171,7 +171,7 @@
 </a>
 <div class="wrapper-left">
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
-    <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
+    <a class="activemenu" href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
@@ -196,7 +196,7 @@
     echo $template->render($twigContent);
     ?>
 </div>
-<div id="popup1" class="overlay">
+<!--<div id="popup1" class="overlay">
     <div class="popup">
         <div class="login-overskrift">
             <div class="log-intitle-filler"></div>
@@ -209,7 +209,7 @@
         </form>
         <a class="close" href="#">&times;</a>
     </div>
-</div>
+</div>-->
 
 
 
@@ -250,6 +250,46 @@
 </div>-->
 
 
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <div class="login-overskrift">
+            <div class="log-intitle-filler"></div>
+            <div class="log-intitle">Create reservation</div>
+        </div>
+        <form class="forming" action="Controller/addreservation.php" method="POST">
+            Id: <input type="text" value="" name="Id" />
+            Product: <input type="text" value="" name="Product" />
+            ScheduledDate: <input type="text" value="" name="ScheduledDate" />
+            Components: <select name="ComponentChooser">
+                <option value="placeholder">Please Select Component</option>
+                <?php
+                $localuri = "http://storageservice2018.azurewebsites.net/Service1.svc/komponenter";
+                $Liste ->Quantity = $_REQUEST['Quantity'];
+                $json = file_get_contents($localuri);
+                $Liste = json_decode($json); //fortæller jeg gerne vil have det i json
+
+                foreach($Liste as $item)
+                {
+                    echo "<option value='". $item->Quantity ."'>ID: ".$item->Id.", Title: ". $item->Title . ", Bulk: ". $item->Quantity ."</option>";
+                }
+                ?>
+            </select>
+            <?php
+            /*            if (isset($_GET['ComponentChooser']))
+                        {
+                            echo "Amount: <input type=\"number\" name=\"quantity\" min=\"1\" max=\"5\">";
+                        }
+
+                        */?>
+
+            Amount: <input type="number" value="4" name="Quantity" min="1" max="5">
+            <input type="submit" value="Tilføj" name="TilføjKnap" />
+        </form>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
+
+
 <div id="popup3" class="overlay">
     <div class="popup">
         <div class="login-overskrift">
@@ -260,6 +300,7 @@
         <form class="forming" action="Controller/updatereservation.php" method="POST">
             Id: <input type="text" value="" name="Id" />
             Product: <input type="text" value="" name="Product" />
+            ScheduledDate: <input type="text" value="" name="ScheduledDate" />
             Send: <input type="submit" value="Edit" name="EditKnap" />
         </form>
         <a class="close" href="#">&times;</a>

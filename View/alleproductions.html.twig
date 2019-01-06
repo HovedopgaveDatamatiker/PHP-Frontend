@@ -1,47 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="Stylesheet/Indexstyle.css">
     <meta charset="UTF-8">
     <title>Reservations</title>
 </head>
 <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-
-     table {
-         font-family: arial, sans-serif;
-         border-collapse: collapse;
-         width: 100%;
-     }
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-
     .container {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
         margin: auto;
+        float: left;
     }
     .item {
         height: 400px;
@@ -52,12 +22,14 @@
     }
 
     .item-title {
-        height: 49px;
+        height: 81px;
         font-size: 13px;
         width: 100%;
         color: white;
         margin-top: -17px;
-        background-color: aquamarine;
+        background-color: #c54343;
+        display: flex;
+        justify-content: space-between;
     }
 
     .item-content {
@@ -74,60 +46,340 @@
         font-size: 13px;
         width: 100%;
         color: white;
-        margin-top: -17px;
         background-color: aquamarine;
+    }
+
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+
+    .active:after {
+        content: "\2212";
+    }
+
+    .panel {
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s;
+        transition-property: all;
+        transition-duration: .5s;
+        transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+        margin-top: -352px;
+        height: 298px;
+        overflow-y: scroll;
+    }
+
+    .list {
+        display: -webkit-box;
+        box-sizing: border-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 500px;
+        background-color: #fff;
+        list-style: none;
+        overflow: hidden;
+        font-family: 'Roboto', sans-serif;
+    }
+    .list .list-item {
+        margin: 0;
+        padding: 0;
+        border-bottom: 1px solid #ecf0f1;
+        position: relative;
+    }
+    .list .list-item:last-child {
+        border: 0;
+    }
+    .hidden-box {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        opacity: 0;
+    }
+
+    .text {
+        display: flex;
+    }
+
+    .boxcheck {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-item-align: center;
+        align-self: center;
+        position: relative;
+        height: 20px;
+        width: 20px;
+        border: 2px solid #3498db;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    .check--label {
+        font-size: 20px;
+        margin: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .check--label-box {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-item-align: center;
+        align-self: center;
+        position: relative;
+        height: 20px;
+        width: 20px;
+        margin: 0 20px;
+        border: 2px solid #3498db;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    .check--label-text {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-item-align: center;
+        align-self: center;
+        position: relative;
+        cursor: pointer;
+        padding: 20px;
+        border-left: 1px solid #ecf0f1;
+        color: black;
+        font-size: 18px;
+    }
+    .check--label-text:after {
+        content: '';
+        display: block;
+        width: 0%;
+        height: 2px;
+        background-color: #000;
+        position: absolute;
+        top: 50%;
+        left: 7.5%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: width 100ms ease-in-out;
+        transition: width 100ms ease-in-out;
+    }
+    .hidden-box:checked + .check--label {
+        background-color: #F9F9F9;
+    }
+    .hidden-box:checked + .check--label .check--label-box {
+        background-color: #3498db;
+    }
+    .hidden-box:checked + .check--label .check--label-box:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: 4px;
+        width: 6px;
+        height: 12px;
+        border: solid #000;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .hidden-box:checked + .check--label .check--label-text:after {
+        width: 85%;
     }
 
 
 </style>
 <body>
-
-<table>
-
-    <tr>
-        <th>ID</th>
-        <th>Product</th>
-
-    </tr>
-    {% for p in Productions %}
-        <tr>
-            <td>{{ p.Id }}</td>
-            <td>{{ p.Product}}</td>
-
-        </tr>
-    {% endfor %}
-</table>
-
-<div class="container">
+{#<div class="container">
     {% for p in Productions %}
 
         <div class="item">
             <div class="item-title">
-                <h1>{{ r.Product}}</h1>
+                <h1>{{ p.Product}}</h1>
             </div>
             <div class="item-content">
                 <br>
                 <td>
-                    <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/updateresevation.php" method="POST">
-                        <input type="hidden" value="{{r.Id}}" name="Id" />
-                        <input type="submit" value="To Production" name="MoveKnap" />
+                    <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/moveproduction.php" method="POST">
+                        <input type="hidden" value="{{p.Id}}" name="Id" />
+                        <input type="submit" value="Done" name="MoveKnap" />
                     </form>
                     <br>
-                    <a href="#popup3">
-                        <form action="">
-                            <input type="button" value="Edit" name="EditKnap" />
-                        </form>
-                    </a>
+                    <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/deleteproduction.php" method="POST">
+                        <input type="hidden" value="{{p.Id}}" name="Id" />
+                        <input type="submit" value="Delete" name="SletKnap" />
+                    </form>
                 </td>
             </div>
             <div class="item-actions">
-                <h1>{{ r.Id }}</h1><h1>{{ r.IsDone }}</h1>
+                <h1>{{ p.Id }}</h1><h1>{{ r.IsDone }}</h1>
             </div>
         </div>
 
 
     {% endfor %}
+</div>#}
+
+<div class="container">
+    {% for p in Productions %}
+    <div class="item">
+        <div class="item-title">
+            <span class="text"><h1>{{ p.Product}}</h1></span>
+            <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/moveproduction.php" method="POST">
+                <input type="hidden" value="{{p.Id}}" name="Id" />
+                {#<input type="submit" value="Done" name="MoveKnap" />#}
+                <span class="text2"><button type="submit" id="sendNewSms" name="sendNewSms" disabled="disabled">DONE</button></span>
+            </form>
+            <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/deleteproduction.php" method="POST">
+                <input type="hidden" value="{{p.Id}}" name="Id" />
+                <input type="submit" value="Delete" name="SletKnap" />
+            </form>
+        </div>
+        <div class="item-content">
+            {{ p.ScheduledDate }}<br>
+            {{ p.Id }}
+        </div>
+        <div class="item-actions">
+            <button class="accordion">EXPAND</button>
+            <div class="panel">
+                <ul class="list">
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="first"/>
+                        <label for="first" class="check--label">
+                            <span class="check--label-text">Spectrometer</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking"></span>
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="second" />
+                        <label for="second" class="check--label">
+                            <span class="check--label-text">ATR</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking1"></span>
+
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="third" />
+                        <label for="third" class="check--label">
+                            <span class="check--label-text">TEC</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking2"></span>
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="third" />
+                        <label for="third" class="check--label">
+                            <span class="check--label-text">PLC</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking3"></span>
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="third" />
+                        <label for="third" class="check--label">
+                            <span class="check--label-text">Cooling</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking4"></span>
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="third" />
+                        <label for="third" class="check--label">
+                            <span class="check--label-text">NUC</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking5"></span>
+                        </label>
+                    </li>
+                    <li class="list-item">
+                        <input type="checkbox" class="hidden-box" id="third" />
+                        <label for="third" class="check--label">
+                            <span class="check--label-text">Power</span>
+                            <span class="check--label-box"><input type="checkbox" onclick="checkEvent()" id="checking6"></span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 </div>
+
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+
+            } else {
+                panel.style.maxHeight = 298 + "px";
+
+            }
+
+
+        });
+    }
+    var checker = document.getElementById('checking');
+    var checker1 = document.getElementById('checking1');
+    var checker2 = document.getElementById('checking2');
+    var checker3 = document.getElementById('checking3');
+    var checker4 = document.getElementById('checking4');
+    var checker5 = document.getElementById('checking5');
+    var checker6 = document.getElementById('checking6');
+    var sendbtn = document.getElementById('sendNewSms');
+
+    function checkEvent(){
+        if (checker.checked && checker1.checked === true && checker2.checked === true && checker3.checked === true && checker4.checked === true && checker5.checked === true && checker6.checked === true) {
+            sendbtn.disabled = false;
+        } else{
+            sendbtn.disabled = true;
+        }
+    }
+</script>
 
 </body>
 </html>

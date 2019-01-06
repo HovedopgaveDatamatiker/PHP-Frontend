@@ -14,7 +14,7 @@ $loader = new Twig_Loader_Filesystem('../view');   // set folder to html/twig fi
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
-$template = $twig->loadTemplate('redirect.html.twig'); // actual twig file
+$template = $twig->loadTemplate('redirect_newreservation.html.twig'); // actual twig file
 $con = new stdClass();
 $con ->Id = $_REQUEST['Id'];
 $con ->Product = $_REQUEST['Product'];
@@ -48,13 +48,13 @@ $loader = new Twig_Loader_Filesystem('../view');   // set folder to html/twig fi
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
-$template = $twig->loadTemplate('redirect.html.twig'); // actual twig file
+$template = $twig->loadTemplate('redirect_newreservation.html.twig'); // actual twig file
 $con = new stdClass();
 $con ->Id = $_REQUEST['Id'];
 $con ->IsDone = false;
 $con ->IsInProduction = false;
 $con ->Product = $_REQUEST['Product'];
-
+$con ->ScheduledDate = $_REQUEST['ScheduledDate'];
 
 
 $json = json_encode($con);

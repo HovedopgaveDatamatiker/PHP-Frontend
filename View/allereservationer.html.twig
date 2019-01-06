@@ -5,7 +5,7 @@
     <title>Reservations</title>
 </head>
 <style>
-    table {
+    /*table {
         font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 100%;
@@ -31,7 +31,7 @@
         height: 400px;
         width: 300px;
         background-color: purple;
-        /* padding: 10px; */
+        !* padding: 10px; *!
         margin: 10px;
     }
 
@@ -60,7 +60,54 @@
         color: white;
         margin-top: -17px;
         background-color: aquamarine;
+    }*/
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: auto;
+        float: left;
     }
+    .item {
+        height: 400px;
+        width: 300px;
+        background-color: purple;
+        /* padding: 10px; */
+        margin: 10px;
+    }
+
+    .item-title {
+        height: 81px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: #c54343;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .item-content {
+        height: 300px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: grey;
+    }
+
+    .item-actions {
+        height: 49px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        background-color: aquamarine;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+
+
 
 </style>
 <body>
@@ -84,7 +131,7 @@
 
 </table>#}
 
-<div class="container">
+{#<div class="container">
 {% for r in Reservations %}
 
     <div class="item">
@@ -104,6 +151,11 @@
                         <input type="button" value="Edit" name="EditKnap" />
                     </form>
                 </a>
+                <br>
+                <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/deletereservation.php" method="POST">
+                    <input type="hidden" value="{{r.Id}}" name="Id" />
+                    <input type="submit" value="Delete" name="SletKnap" />
+                </form>
             </td>
         </div>
         <div class="item-actions">
@@ -113,6 +165,60 @@
 
 
 {% endfor %}
+</div>#}
+
+<div class="container">
+    {% for r in Reservations %}
+    <div class="item">
+        <div class="item-title">
+            <span class="text"><h1>{{ r.Product}}</h1></span>
+
+            <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/moveresevation.php" method="POST">
+                <input type="hidden" value="{{r.Id}}" name="Id" />
+                <span class="text2"><button name="MoveKnap" type="submit">TO PRODUCTION</button></span>
+                {#<input type="submit" value="To Production" name="MoveKnap" />#}
+            </form>
+        </div>
+        <div class="item-content">
+            {#<form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/moveresevation.php" method="POST">
+                <input type="hidden" value="{{r.Id}}" name="Id" />
+                <input type="submit" value="To Production" name="MoveKnap" />
+            </form>#}
+            <h1>{{ r.ScheduledDate }}</h1>
+            <p>{{ r.Id }}</p>
+        </div>
+        <div class="item-actions">
+            <a href="#popup3">
+                <form action="">
+                    <input type="button" value="Edit" name="EditKnap" />
+                </form>
+            </a>
+            <br>
+            <form action="http://localhost:8080/PHPProjects/Hovedopgave/Controller/deletereservation.php" method="POST">
+                <input type="hidden" value="{{r.Id}}" name="Id" />
+                <input type="submit" value="Delete" name="SletKnap" />
+            </form>
+        </div>
+    </div>
+    {% endfor %}
 </div>
+
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight){
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+</script>
 </body>
 </html>

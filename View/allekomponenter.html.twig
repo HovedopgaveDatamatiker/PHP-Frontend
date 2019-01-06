@@ -27,10 +27,10 @@
 
     <tr>
         <th>ID</th>
-        <th>Title</th>
+        <th>Component</th>
         <th>Specifications</th>
         <th>Price</th>
-        <th>Bulk</th>
+        <th>Quantity</th>
         <th>Link</th>
         <th>Note</th>
         <th>Estimated Delivery</th>
@@ -49,7 +49,7 @@
         <td>{{ c.Link }}</td>
         <td>{{ c.Note}}</td>
         <td>{{ c.EstDelivery }}</td>
-        <td>{{ c.Available }}50</td>
+        <td>{{ c.Available }}</td>
         <td>{{ c.Reserved }}</td>
         <td>{{ c.AvailableReserved }}</td>
         <td>
@@ -66,9 +66,33 @@
         </td>
 
     </tr>
+
     {% endfor %}
 
 </table>
 
+
+<div id="popup2" class="overlay">
+    <div class="popup">
+        <div class="login-overskrift">
+            <div class="log-intitle-filler"></div>
+            <div class="log-intitle"><b>Edit Component<b></div>
+        </div>
+
+        <form class="forming" action="../Controller/updatekomponent.php" method="POST">
+            Id: <input type="number" value="" placeholder="Insert ID" name="Id" />
+            Title: <input type="text" value="" placeholder="Insert Text" name="Title" />
+            Specification: <input type="text" step="0.01" value="" placeholder="Insert Text" name="Specification" />
+            Price: <input type="number" value="" placeholder="Insert Number" name="Price" />
+            Link: <input type="text" value="" placeholder="Insert Link" name="Link" />
+            Note: <input type="text" value="" placeholder="Insert Text" name="Note" />
+            EstDelivery: <input type="number" value="" placeholder="Insert Amount of days" name="EstDelivery" />
+            Quantity: <input type="number" value="" placeholder="Insert Number" name="Quantity" />
+            Available: <input type="number" value="" placeholder="Insert Number" name="Available" />
+            Send: <input type="submit" value="Edit" name="EditKnap" />
+        </form>
+        <a class="close" href="#">&times;</a>
+    </div>
+</div>
 </body>
 </html>

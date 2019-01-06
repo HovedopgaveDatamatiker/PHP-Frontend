@@ -15,14 +15,14 @@
 
 
 <div class="wrapper-left">
-    <a class="active" href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
+    <a class="activemenu" href="http://localhost:8080/PHPProjects/Hovedopgave/"><i class="fa fa-home"></i> Storage</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Reservations.php"> Reservation</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/Production.php"> Production</a>
     <a href="http://localhost:8080/PHPProjects/Hovedopgave/FinishedProductions.php"> Finished Production</a>
 </div>
 
 <div class="wrapper-right">
-    <h1>Alle Komponenter</h1>
+    <h1>Storage</h1>
     <?php
     /**
      * Created by PhpStorm.
@@ -49,23 +49,21 @@
 
     ?>
 
-<!--    <h1>Slet en komponent</h1>
+ <h1>Slet en komponent</h1>
     <form action="Controller/deletekomponent.php" method="POST">
         Id: <input type="number" value="" name="Id" />
         Send: <input type="submit" value="Slet" name="SletKnap" />
     </form>
--->
-
 </div>
 
 <div id="popup1" class="overlay">
     <div class="popup">
         <div class="login-overskrift">
             <div class="log-intitle-filler"></div>
-            <div class="log-intitle"><b>OPRET KOMPONENT<b></div>
+            <div class="log-intitle"><b>Create Component<b></div>
         </div>
         <form class="forming" action="Controller/addkomponent.php" method="POST">
-            Id: <input type="text" value="" name="Id" />
+            Id: <input type="number" value="" name="Id" />
             Title: <input type="text" value="" name="Title" />
             Specification: <input type="text" step="0.01" value="" name="Specification" />
             Price: <input type="number" value="" name="Price" />
@@ -73,33 +71,13 @@
             Note: <input type="text" value="" name="Note" />
             EstDelivery: <input type="number" value="" name="EstDelivery" />
             Quantity: <input type="number" value="" name="Quantity" />
+            Available: <input type="number" value="" name="Available" />
             Send: <input type="submit" value="Tilføj" name="TilføjKnap" />
         </form>
         <a class="close" href="#">&times;</a>
     </div>
 </div>
 
-<div id="popup2" class="overlay">
-    <div class="popup">
-        <div class="login-overskrift">
-            <div class="log-intitle-filler"></div>
-            <div class="log-intitle"><b>Edit Component<b></div>
-        </div>
-
-        <form class="forming" action="Controller/updatekomponent.php" method="POST">
-            Id: <input type="text" value="" name="Id" />
-            Title: <input type="text" value="" name="Title" />
-            Specification: <input type="text" step="0.01" value="" name="Specification" />
-            Price: <input type="number" value="" name="Price" />
-            Link: <input type="text" value="" name="Link" />
-            Note: <input type="text" value="" name="Note" />
-            EstDelivery: <input type="number" value="" name="EstDelivery" />
-            Quantity: <input type="number" value="" name="Quantity" />
-            Send: <input type="submit" value="Edit" name="EditKnap" />
-        </form>
-        <a class="close" href="#">&times;</a>
-    </div>
-</div>
 
 </body>
 </html>

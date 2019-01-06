@@ -20,30 +20,79 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin: auto;
+    }
+    .item {
+        height: 400px;
+        width: 300px;
+        background-color: purple;
+        /* padding: 10px; */
+        margin: 10px;
+    }
+
+    .item-title {
+        height: 49px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: aquamarine;
+    }
+
+    .item-content {
+        height: 300px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: grey;
+    }
+
+    .item-actions {
+        height: 49px;
+        font-size: 13px;
+        width: 100%;
+        color: white;
+        margin-top: -17px;
+        background-color: aquamarine;
+    }
+
 </style>
 <body>
-
-<table>
-
-    <tr>
-        <th>ID</th>
-        <th>Product</th>
-        <th>ScheduledDate</th>
-        <th>IsDone</th>
-        <th>IsInProduction</th>
-    </tr>
+<div class="container">
     {% for d in Done %}
-    <tr>
-        <td>{{ d.Id }}</td>
-        <td>{{ d.Product}}</td>
-        <td>{{ d.ScheduledDate }}</td>
-        <td>{{ d.IsDone }}</td>
-        <td>{{ d.IsInProduction }}</td>
 
-    </tr>
+        <div class="item">
+            <div class="item-title">
+                <h1>{{ d.Product}}</h1>
+            </div>
+            <div class="item-content"></div>
+            <div class="item-actions">
+                <h1>{{ d.Id }}</h1>
+            </div>
+        </div>
     {% endfor %}
-</table>
-
-
+</div>
 </body>
 </html>

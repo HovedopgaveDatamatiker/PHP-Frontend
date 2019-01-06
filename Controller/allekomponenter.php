@@ -14,7 +14,7 @@ $loader = new Twig_Loader_Filesystem('../view'); //fortæller hvor template er l
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
-$template = $twig->loadTemplate('allekomponenter.html.twig'); //referer til allecoins.html.twig.twig så den kan bruges
+$template = $twig->loadTemplate('allekomponenter.html.twig'); //referer til allekomponenter.html.twig.twig så den kan bruges
 $uri = "http://storageservice2018.azurewebsites.net/Service1.svc/komponenter";
 $json = file_get_contents($uri);
 $Liste = json_decode($json); //fortæller jeg gerne vil have det i json
@@ -23,3 +23,9 @@ $twigContent = array ("Components" => $Liste); // laver et array med min variabe
 echo $template->render($twigContent);
 
 ?>
+
+
+
+
+
+

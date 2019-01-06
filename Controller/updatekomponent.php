@@ -16,6 +16,7 @@ $con ->Link = $_REQUEST['Link'];
 $con ->Note = $_REQUEST['Note'];
 $con ->EstDelivery = $_REQUEST['EstDelivery'];
 $con ->Quantity = $_REQUEST['Quantity'];
+$con ->Available = $_REQUEST['Available'];
 $json = json_encode($con);
 
 
@@ -30,9 +31,16 @@ curl_setopt($req, CURLOPT_HTTPHEADER, array(
 curl_setopt($req, CURLOPT_POSTFIELDS, $json);   // insert data in body
 curl_setopt($req, CURLOPT_RETURNTRANSFER, false);    // do not display json
 $result = curl_exec($req);  // sends the request and get result
-// Get All Games
+
+
+
+
+
+// Get All Components
 $uri = "http://storageservice2018.azurewebsites.net/Service1.svc/komponenter";
 $jsonStr = file_get_contents($uri);
 $Liste = json_decode($jsonStr);
 $twigContent = array("Components" => $Liste); // fill in the content for the page
 echo $template->render($twigContent);   // let twig file generate html
+
+

@@ -13,19 +13,18 @@ $loader = new Twig_Loader_Filesystem('../View');
 $twig = new Twig_Environment($loader, array(
     'auto_reload' => true
 ));
-$template = $twig->loadTemplate('redirect_deletecomponent.html.twig');
+$template = $twig->loadTemplate('redirect_deletereservation.html.twig');
 $id = $_REQUEST['Id'];
 // set up DELETE request
-$URI = "http://storageservice2018.azurewebsites.net/Service1.svc/komponenter?id=".$id;
+$URI = "http://storageservice2018.azurewebsites.net/Service1.svc/reservations?id=".$id;
 $req = curl_init($URI); // initlize curl
 curl_setopt($req, CURLOPT_CUSTOMREQUEST, "DELETE");   // request method
 curl_setopt($req, CURLOPT_HTTPHEADER, array(
     'Content-Type: application/json'));
 $result = curl_exec($req);  // sends the request and get result
 //Get All
-$uri = "http://storageservice2018.azurewebsites.net/Service1.svc/komponenter";
+$uri = "http://storageservice2018.azurewebsites.net/Service1.svc/reservations";
 $jsonStr = file_get_contents($uri);
 $Liste = json_decode($jsonStr);
-$twigContent = array("Components" => $Liste); // fill in the content for the page
+$twigContent = array("Reservations" => $Liste); // fill in the content for the page
 echo $template->render($twigContent);   // let twig file generate html
-
